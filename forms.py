@@ -128,7 +128,7 @@ class VenueForm(Form):
         'facebook_link', validators=[URL()]
     )
     seeking_talent = BooleanField(
-        'seeking_talent', default="checked", validators=[DataRequired()]
+        'seeking_talent'
     )
     seeking_description = StringField(
         'seeking_description', validators=[Length(max=500)]
@@ -245,7 +245,7 @@ class ArtistForm(Form):
         'website', validators=[URL(), Length(max=120)]
     )
     seeking_venue = BooleanField(
-        'seeking_venue', default="checked", validators=[DataRequired()]
+        'seeking_venue'
     )
     seeking_description = StringField(
         'seeking_description', validators=[Length(max=500)]
