@@ -23,7 +23,6 @@ app = Flask(__name__)
 moment = Moment(app)
 app.config.from_object('config')
 
-# TODO: connect to a local postgresql database
 #----------------------------------------------------------------------------#
 # Models.
 db = SQLAlchemy(app)
@@ -206,9 +205,8 @@ def create_venue_form():
 
 @app.route('/venues/create', methods=['POST'])
 def create_venue_submission():
-  
+  form = VenueForm()
   try:
-    form = VenueForm()
     # print(form.seeking_talent.data)
     new_venue = Venue(
       name=request.form['name'],
@@ -233,6 +231,10 @@ def create_venue_submission():
     # roll back is error
     db.session.rollback()
     flash('An error occurred. Venue ' + request.form['name'] + ' could not be listed.')
+
+  finally:
+    db.session.close()
+
   return render_template('pages/home.html')
 
 
@@ -347,6 +349,7 @@ def edit_artist(artist_id):
   # use the following method instead.
   form.seeking_venue.data = A_artist.seeking_venue
   form.genres.data = A_artist.genres
+  form.state.data = A_artist.state
 
   return render_template('forms/edit_artist.html', form=form, artist=A_artist)
 
@@ -393,6 +396,7 @@ def edit_venue(venue_id):
   # use the following method instead.
   form.seeking_talent.data = A_venue.seeking_talent
   form.genres.data = A_venue.genres
+  form.state.data = A_venue.state
 
   return render_template('forms/edit_venue.html', form=form, venue=A_venue)
 
