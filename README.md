@@ -95,8 +95,8 @@ Highlight folders:
 1. Understand the Project Structure (explained above) and where important files are located.
 2. Install all the dependencies according to the instructions before. 
 3. git clone this repo to your local folder using `https://github.com/hellogaga/Udacity_fyyur.git`
-4. Navigate to **config.py** and revise the line `SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:123456@localhost:5432/fyyur'` with your own PostgreSQL username and password. 
-5. Login to your PostgreSQL through `psql -U yourusername` and build a local database named 'fyyur' through the following in the computer console `CREATE DATABASE fyyur;`
+4. Navigate to **config.py** and revise the line `SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:123456@localhost:5432/fyyur1'` with your own PostgreSQL username and password. 
+5. Login to your PostgreSQL through `psql -U yourusername` and build a local database named 'fyyur' through the following in the computer console `CREATE DATABASE fyyur1;`
 6. Navigate to the local folder and run the following commands. They will initiate the required tables in the application. 
 ```
 flask db init
